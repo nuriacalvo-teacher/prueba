@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registro Alumno - Web Educativa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    form {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 1em;
+      font-weight: bold;
+      color: #555;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.5em;
+      margin-top: 0.2em;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    button {
+      margin-top: 1.5em;
+      width: 100%;
+      padding: 0.7em;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <form id="registroForm">
+    <h1>Ingresa tus datos</h1>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required />
+
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" required />
+
+    <label for="curso">Curso:</label>
+    <select id="curso" name="curso" required>
+      <option value="">Selecciona un curso</option>
+      <option value="1º ESO">1º ESO</option>
+      <option value="2º ESO">2º ESO</option>
+      <option value="3º ESO">3º ESO</option>
+      <option value="4º ESO">4º ESO</option>
+      <option value="1º Bachillerato">1º Bachillerato</option>
+      <option value="2º Bachillerato">2º Bachillerato</option>
+    </select>
+
+    <button type="submit">Ingresar</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('registroForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const nombre = form.nombre.value.trim();
+      const apellido = form.apellido.value.trim();
+      const curso = form.curso.value;
+
+      if (!nombre || !apellido || !curso) {
+        alert('Por favor, rellena todos los campos.');
+        return;
+      }
+
+      // Guardar en localStorage
+      localStorage.setItem('alumnoNombre', nombre);
+      localStorage.setItem('alumnoApellido', apellido);
+      localStorage.setItem('alumnoCurso', curso);
+
+      // Redirigir a la página del ejercicio
+      window.location.href = 'ejercicio1.html';
+    });
+  </script>
+</body>
+</html>
